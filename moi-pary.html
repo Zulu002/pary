@@ -1,0 +1,998 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#e5eddb"><meta name="description" content="Расписание пар ДГУНХ — прикладная информатика, 2 курс"><title>Мои пары</title><style>
+:root{font-family:Arial,Helvetica,sans-serif;color:#293128;background:#f7f8f2;font-synthesis:none;--surface:#fff;--muted:#747b70;--line:#e0e5d9;--green:#ddecce;--ink:#293128;--accent:#435d36}*{box-sizing:border-box}body{margin:0}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer;border:0;color:inherit}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #759b55;outline-offset:4px}a{color:inherit}.shell{max-width:1240px;padding:0 48px;margin:auto}header{height:105px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{text-decoration:none;font-size:23px;font-weight:700;display:flex;gap:12px;align-items:center}.logo{display:grid;place-items:center;width:42px;height:42px;background:var(--green);border-radius:15px;font-size:29px}.icon{width:44px;height:44px;border-radius:50%;background:#e9ede3;font-size:22px;display:inline-grid;place-items:center}.intro{display:flex;justify-content:space-between;align-items:center;margin:50px 0 34px}.eyebrow{font-size:10px;letter-spacing:1.8px;font-weight:700;margin:0 0 15px;color:var(--muted)}h1{font-size:clamp(32px,4.3vw,54px);letter-spacing:-2.7px;margin:0;font-weight:500}h1 span{color:#819f64}.subtitle{color:var(--muted);font-size:14px;margin:15px 0 0}.semester{font-size:10px;letter-spacing:2px;border:1px solid var(--line);border-radius:50%;width:91px;height:91px;display:flex;flex-direction:column;justify-content:center;text-align:center;transform:rotate(9deg)}.semester strong{font-size:25px;letter-spacing:-1px;margin-top:4px}.overview{display:grid;grid-template-columns:1.65fr 1fr;gap:18px;margin-bottom:45px}.now{background:var(--green);padding:28px 32px;border-radius:30px;min-height:227px;position:relative;overflow:hidden}.now:after{content:'✳';position:absolute;right:14px;bottom:-45px;font-size:200px;opacity:.08;pointer-events:none}.status{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:bold;letter-spacing:1px}.dot{width:7px;height:7px;background:#476539;border-radius:50%;box-shadow:0 0 0 4px #47653915}.now h2{font-size:26px;line-height:1.25;max-width:85%;letter-spacing:-.7px;margin:20px 0 10px}.now p{font-size:13px;line-height:1.6;margin:0}.now .progress{height:4px;background:#47653920;border-radius:4px;margin-top:20px}.progress span{display:block;height:100%;background:#526d3e;border-radius:4px}.session{background:#ecefe6;padding:28px;border-radius:30px}.session h2{font-size:21px;letter-spacing:-.5px;margin:0 0 12px}.session p{font-size:13px;line-height:1.6;color:var(--muted)}.session a{display:flex;justify-content:space-between;font-size:12px;text-decoration:none;border-top:1px solid #d6dccf;padding-top:16px;margin-top:20px}.weekbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:23px}.weekbar .eyebrow{margin-bottom:8px}.weekbar h2{font-size:27px;letter-spacing:-1px;margin:0;font-weight:500}.controls{display:flex;align-items:center;gap:8px}#today{background:transparent;border:1px solid var(--line);padding:12px 18px;border-radius:30px;font-size:12px;margin-right:6px}.weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:30px}.day-tab{background:#ecefe6;padding:14px 4px;border-radius:20px;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11px;color:var(--muted)}.day-tab strong{font-size:22px;color:var(--ink);font-weight:500}.day-tab.today{background:var(--green)}.day-tab.selected{outline:2px solid #7e9768;outline-offset:-2px}.day-tab i{width:4px;height:4px;border-radius:50%;background:#829371}.day-tab.empty i{opacity:0}.list-heading{display:flex;justify-content:space-between;align-items:center;margin:0 0 18px}.list-heading h3{font-size:17px;font-weight:500;margin:0}.list-heading span{font-size:11px;color:var(--muted)}.day-section{margin-bottom:25px;scroll-margin-top:20px}.day-title{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:13px;font-weight:500}.day-title span{color:var(--muted);font-size:11px}.today-badge{background:var(--green);padding:4px 8px;border-radius:8px;color:var(--accent)!important}.lesson{display:grid;grid-template-columns:85px 1fr auto;gap:18px;align-items:center;padding:20px 22px;background:var(--surface);border-radius:20px;margin:8px 0;border:1px solid transparent}.lesson.active{border:2px solid #7b9a5b;background:#eaf2df}.time{font-size:16px;letter-spacing:-.3px}.time small{display:block;font-size:11px;color:var(--muted);margin-top:6px}.lesson h4{margin:0 0 8px;font-size:15px;line-height:1.35;font-weight:500}.meta{font-size:11px;color:var(--muted);line-height:1.6}.type{display:inline-block;background:#eee9f6;color:#78658c;padding:4px 8px;border-radius:7px;margin-right:8px;font-size:10px}.color-1 .type{background:#e3edf7;color:#557792}.color-2 .type{background:#f5eadb;color:#92744e}.color-3 .type{background:#e4eee1;color:#5c7a52}.color-4 .type{background:#f3e3e8;color:#976878}.room{font-size:12px;background:#f1f3ed;border-radius:11px;padding:10px 12px;max-width:190px;line-height:1.5}.active-tag{color:#476539;font-size:10px;font-weight:700;display:block;margin-top:7px}.past{opacity:.6}.empty-state{text-align:center;background:var(--surface);border-radius:24px;padding:45px 20px}.empty-state .symbol{font-size:45px;color:#879d71}.empty-state p{color:var(--muted);font-size:13px;line-height:1.7}.swipe-hint{text-align:center;font-size:10px;color:var(--muted);margin:30px 0}details{border-top:1px solid var(--line);padding:22px 0;font-size:12px;color:var(--muted);line-height:1.8}summary{cursor:pointer;color:var(--ink)}.bells{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}.bell{padding:8px 13px;background:#ecefe6;border-radius:12px}footer{border-top:1px solid var(--line);padding:24px 0 35px;display:flex;justify-content:space-between;font-size:10px;color:var(--muted)}.calendar{touch-action:pan-y}.schedule{animation:appear .22s ease}@keyframes appear{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:none}}body.dark{--surface:#252b23;--muted:#acb5a5;--line:#394132;--green:#384d2d;--ink:#e1e9d9;--accent:#b7d79f;background:#1a2018;color:var(--ink)}.dark .session,.dark .day-tab,.dark .icon,.dark .bell{background:#2c3527}.dark .now h2,.dark .now p,.dark .status{color:#e1e9d9}.dark .lesson.active{background:#34472b}.dark .room{background:#343e2e}.dark .day-tab.today{background:var(--green)}@media(max-width:650px){.shell{padding:0 20px}header{height:79px}.brand{font-size:20px}.intro{margin:32px 0 25px}h1{font-size:34px;letter-spacing:-1.7px;max-width:270px}.eyebrow{font-size:8px;letter-spacing:1.2px}.subtitle{font-size:12px;line-height:1.6}.semester{display:none}.overview{grid-template-columns:1fr;margin-bottom:32px;gap:12px}.now{min-height:220px;padding:26px}.now h2{font-size:25px}.session{padding:20px 24px}.session h2{font-size:19px}.session p{display:none}.session a{margin-top:13px;padding-top:12px}.weekbar h2{font-size:22px}.controls{gap:5px}.icon{width:38px;height:38px}#today{padding:10px;font-size:11px;margin:0}.weekdays{gap:5px}.day-tab{border-radius:16px;padding:12px 0;font-size:10px}.day-tab strong{font-size:20px}.lesson{grid-template-columns:58px 1fr;gap:12px;padding:17px 14px;border-radius:18px;align-items:start}.time{font-size:14px;padding-top:2px}.lesson h4{font-size:14px}.room{grid-column:2;padding:0;background:transparent;font-size:11px;color:var(--muted);max-width:none;margin-top:-6px}.meta{font-size:10px}.type{margin-bottom:4px;font-size:9px}.list-heading h3{font-size:16px}.swipe-hint{font-size:9px}footer{display:block;line-height:2}footer span{display:block}}@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+
+
+/* Compact schedule layout */
+header{height:68px;justify-content:flex-end;border-bottom:0}main{padding-top:8px}.overview{grid-template-columns:1fr;margin-bottom:30px}.now{min-height:190px}.now h2{max-width:85%}details{margin-bottom:24px}@media(max-width:650px){header{height:58px}.now{min-height:190px}.overview{margin-bottom:28px}}
+
+.overview{grid-template-columns:1.65fr 1fr}@media(max-width:650px){.overview{grid-template-columns:1fr}}
+/* Keep the page background across the full viewport, including collapsed content. */
+html{min-height:100%;background:#f7f8f2}body{min-height:100vh;min-height:100dvh}html:has(body.dark){background:#1a2018;color-scheme:dark}details:last-child{margin-bottom:0;padding-bottom:24px}
+
+.session .bells{display:grid;grid-template-columns:1fr;gap:5px;margin:16px 0 0}.session .bell{padding:5px 0;background:transparent;border-radius:0;font-size:12px}.session p{margin-bottom:0}.calendar{padding-bottom:24px}@media(max-width:650px){.session .bells{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.session p{display:block}.session .bell{font-size:11px}}
+
+.overview{grid-template-columns:1fr}
+/* Gentle motion and tactile feedback. */
+body,.now,.session,.day-tab,.icon,.lesson,.room,.bell,#today{transition:background-color .3s ease,color .3s ease,border-color .25s ease,box-shadow .25s ease,opacity .2s ease,transform .2s ease}
+button{transition:background-color .25s ease,transform .18s ease,box-shadow .25s ease}
+button:active{transform:scale(.94)}
+@media(hover:hover){.icon:hover,#today:hover{box-shadow:0 3px 12px #29312812;transform:translateY(-2px)}.day-tab:hover{transform:translateY(-3px)}.lesson:hover{transform:translateY(-2px);box-shadow:0 5px 20px #29312808}}
+.schedule{animation:none;transition:opacity .13s ease,transform .13s ease}
+.schedule.week-leave{opacity:0;transform:translateX(calc(var(--slide-from,24px) * -0.5))}
+.schedule.week-enter{animation:week-arrive .32s cubic-bezier(.2,.7,.2,1) both}
+@keyframes week-arrive{from{opacity:0;transform:translateX(var(--slide-from,24px))}to{opacity:1;transform:translateX(0)}}
+.week-enter .lesson{animation:card-arrive .38s cubic-bezier(.2,.7,.2,1) both}.week-enter .lesson:nth-of-type(2){animation-delay:35ms}.week-enter .lesson:nth-of-type(3){animation-delay:65ms}.week-enter .lesson:nth-of-type(4){animation-delay:90ms}
+@keyframes card-arrive{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.schedule.week-leave{opacity:1;transform:none}}
+</style></head>
+<body><div class="shell"><header><button id="theme" class="icon" aria-label="Переключить тему">◐</button></header>
+<main><section class="overview"><div id="now" class="now" aria-live="polite">Загружаем расписание…</div></section>
+<section class="calendar" aria-label="Расписание на неделю"><div class="weekbar"><div><p class="eyebrow" id="week-label">ЭТА НЕДЕЛЯ</p><h2 id="range"></h2></div><div class="controls"><button id="today">Сегодня</button><button id="prev" class="icon" aria-label="Предыдущая неделя">←</button><button id="next" class="icon" aria-label="Следующая неделя">→</button></div></div><div id="weekdays" class="weekdays"></div><div class="list-heading"><h3>На этой неделе</h3><span id="count"></span></div><div id="schedule" class="schedule" aria-live="polite"></div></section>
+</main></div><script id="schedule-data" type="application/json">{
+  "title": "Прикладная информатика",
+  "group": "1 группа · 2 курс",
+  "institution": "ДГУНХ",
+  "timezone": "Europe/Moscow",
+  "startDate": "2026-11-05",
+  "endDate": "2026-12-04",
+  "examSession": {
+    "start": "2027-02-01",
+    "end": "2027-02-10",
+    "note": "В PDF указан только период, расписание экзаменов отсутствует."
+  },
+  "notes": [
+    "Аудитории двух лабораторных занятий 17 ноября не указаны в оригинале.",
+    "Пустая строка 3-й пары 4 декабря не считается занятием."
+  ],
+  "bells": [
+    {
+      "pair": 0,
+      "start": "13:25",
+      "end": "14:25"
+    },
+    {
+      "pair": 1,
+      "start": "14:30",
+      "end": "15:30"
+    },
+    {
+      "pair": 2,
+      "start": "15:35",
+      "end": "16:35"
+    },
+    {
+      "pair": 3,
+      "start": "16:40",
+      "end": "17:40"
+    },
+    {
+      "pair": 4,
+      "start": "17:45",
+      "end": "18:45"
+    }
+  ],
+  "lessons": [
+    {
+      "date": "2026-11-05",
+      "pair": 1,
+      "subject": "Иностранный язык",
+      "teacher": "Саидова Г.С.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 0
+    },
+    {
+      "date": "2026-11-05",
+      "pair": 2,
+      "subject": "Исследование операций и методы оптимизаций",
+      "teacher": "Гереева Т.Р.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 1
+    },
+    {
+      "date": "2026-11-05",
+      "pair": 3,
+      "subject": "Исследование операций и методы оптимизаций",
+      "teacher": "Гереева Т.Р.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 1
+    },
+    {
+      "date": "2026-11-06",
+      "pair": 0,
+      "subject": "Алгоритмы и структуры данных",
+      "teacher": "Савина Е.В.",
+      "room": "3-4",
+      "type": "Лекция",
+      "color": 2
+    },
+    {
+      "date": "2026-11-06",
+      "pair": 1,
+      "subject": "Алгоритмы и структуры данных",
+      "teacher": "Савина Е.В.",
+      "room": "3-8",
+      "type": "Лабораторное занятие",
+      "color": 2
+    },
+    {
+      "date": "2026-11-06",
+      "pair": 2,
+      "subject": "Технологии и методы программирования",
+      "teacher": "Гебекова П.И.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 3
+    },
+    {
+      "date": "2026-11-06",
+      "pair": 3,
+      "subject": "Технологии и методы программирования",
+      "teacher": "Гебекова П.И.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 3
+    },
+    {
+      "date": "2026-11-07",
+      "pair": 0,
+      "subject": "Алгоритмы и структуры данных",
+      "teacher": "Савина Е.В.",
+      "room": "3-4",
+      "type": "Лекция",
+      "color": 2
+    },
+    {
+      "date": "2026-11-07",
+      "pair": 1,
+      "subject": "Алгоритмы и структуры данных",
+      "teacher": "Савина Е.В.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 2
+    },
+    {
+      "date": "2026-11-07",
+      "pair": 2,
+      "subject": "Программная инженерия",
+      "teacher": "Кулибеков Н.А.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 4
+    },
+    {
+      "date": "2026-11-07",
+      "pair": 3,
+      "subject": "Программная инженерия",
+      "teacher": "Кулибеков Н.А.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-11-09",
+      "pair": 1,
+      "subject": "Экономический анализ",
+      "teacher": "Батырмурзаева З.М.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 0
+    },
+    {
+      "date": "2026-11-09",
+      "pair": 2,
+      "subject": "Экономический анализ",
+      "teacher": "Батырмурзаева З.М.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 0
+    },
+    {
+      "date": "2026-11-09",
+      "pair": 3,
+      "subject": "Операционные системы",
+      "teacher": "Сагидулаева",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 1
+    },
+    {
+      "date": "2026-11-09",
+      "pair": 4,
+      "subject": "Лидерство и командообразование",
+      "teacher": "Бабаева Д.Г.",
+      "room": "2-2",
+      "type": "Практическое занятие",
+      "color": 2
+    },
+    {
+      "date": "2026-11-10",
+      "pair": 0,
+      "subject": "Экономический анализ",
+      "teacher": "Батырмурзаева З.М.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 0
+    },
+    {
+      "date": "2026-11-10",
+      "pair": 1,
+      "subject": "Экономический анализ",
+      "teacher": "Батырмурзаева З.М.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 0
+    },
+    {
+      "date": "2026-11-10",
+      "pair": 2,
+      "subject": "Операционные системы",
+      "teacher": "Сагидулаева",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 1
+    },
+    {
+      "date": "2026-11-10",
+      "pair": 3,
+      "subject": "Операционные системы",
+      "teacher": "Сагидулаева",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 1
+    },
+    {
+      "date": "2026-11-11",
+      "pair": 0,
+      "subject": "Программирование на языке Python",
+      "teacher": "Шихвеледова Т.А.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 3
+    },
+    {
+      "date": "2026-11-11",
+      "pair": 1,
+      "subject": "Программирование на языке Python",
+      "teacher": "Шихвеледова Т.А.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 3
+    },
+    {
+      "date": "2026-11-11",
+      "pair": 2,
+      "subject": "Вычислительные системы, сети и технологии",
+      "teacher": "Магомедова М.Г.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 4
+    },
+    {
+      "date": "2026-11-11",
+      "pair": 3,
+      "subject": "Вычислительные системы, сети и технологии",
+      "teacher": "Магомедова М.Г.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-11-12",
+      "pair": 0,
+      "subject": "Безопасность жизнедеятельности",
+      "teacher": "Дагиров А.А.",
+      "room": "2-9",
+      "type": "Лекция",
+      "color": 0
+    },
+    {
+      "date": "2026-11-12",
+      "pair": 1,
+      "subject": "Безопасность жизнедеятельности",
+      "teacher": "Дагиров А.А.",
+      "room": "2-9",
+      "type": "Практическое занятие",
+      "color": 0
+    },
+    {
+      "date": "2026-11-12",
+      "pair": 2,
+      "subject": "Исследование операций и методы оптимизаций",
+      "teacher": "Гереева Т.Р.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 1
+    },
+    {
+      "date": "2026-11-12",
+      "pair": 3,
+      "subject": "Исследование операций и методы оптимизаций",
+      "teacher": "Гереева Т.Р.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 1
+    },
+    {
+      "date": "2026-11-13",
+      "pair": 1,
+      "subject": "Технологии и методы программирования",
+      "teacher": "Гебекова П.И.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 3
+    },
+    {
+      "date": "2026-11-13",
+      "pair": 2,
+      "subject": "Технологии и методы программирования",
+      "teacher": "Гебекова П.И.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 3
+    },
+    {
+      "date": "2026-11-13",
+      "pair": 3,
+      "subject": "Иностранный язык",
+      "teacher": "Саидова Г.С.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 0
+    },
+    {
+      "date": "2026-11-13",
+      "pair": 4,
+      "subject": "Физика",
+      "teacher": "Магомедов М.Р.",
+      "room": "4-4",
+      "type": "Лекция",
+      "color": 1
+    },
+    {
+      "date": "2026-11-14",
+      "pair": 1,
+      "subject": "Самоменеджмент",
+      "teacher": "Бабаева Д.Г.",
+      "room": "2-2",
+      "type": "Лекция",
+      "color": 2
+    },
+    {
+      "date": "2026-11-14",
+      "pair": 2,
+      "subject": "Программная инженерия",
+      "teacher": "Кулибеков Н.А.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-11-14",
+      "pair": 3,
+      "subject": "Программная инженерия",
+      "teacher": "Кулибеков Н.А.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 4
+    },
+    {
+      "date": "2026-11-14",
+      "pair": 4,
+      "subject": "Самоменеджмент",
+      "teacher": "Бабаева Д.Г.",
+      "room": "2-2",
+      "type": "Практическое занятие",
+      "color": 2
+    },
+    {
+      "date": "2026-11-16",
+      "pair": 0,
+      "subject": "Лидерство и командообразование",
+      "teacher": "Бабаева Д.Г.",
+      "room": "2-2",
+      "type": "Лекция",
+      "color": 2
+    },
+    {
+      "date": "2026-11-16",
+      "pair": 1,
+      "subject": "Операционные системы",
+      "teacher": "Сагидулаева",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 1
+    },
+    {
+      "date": "2026-11-16",
+      "pair": 2,
+      "subject": "Операционные системы",
+      "teacher": "Сагидулаева",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 1
+    },
+    {
+      "date": "2026-11-16",
+      "pair": 3,
+      "subject": "Элективные дисциплины по физической культуре и спорту",
+      "teacher": "Абдеева Э.З.",
+      "room": "Спортзал №4, Джамалутдина Атаева, 5",
+      "type": "Практическое занятие",
+      "color": 3
+    },
+    {
+      "date": "2026-11-17",
+      "pair": 1,
+      "subject": "Управление информационными системами",
+      "teacher": "Сагидулаева",
+      "room": null,
+      "type": "Лабораторное занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-11-17",
+      "pair": 2,
+      "subject": "Управление информационными системами",
+      "teacher": "Сагидулаева",
+      "room": null,
+      "type": "Лабораторное занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-11-17",
+      "pair": 3,
+      "subject": "Элективные дисциплины по физической культуре и спорту",
+      "teacher": "Абдеева Э.З.",
+      "room": "Спортзал №4, Джамалутдина Атаева, 5",
+      "type": "Практическое занятие",
+      "color": 3
+    },
+    {
+      "date": "2026-11-18",
+      "pair": 1,
+      "subject": "Управление информационными системами",
+      "teacher": "Сагидулаева",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-11-18",
+      "pair": 2,
+      "subject": "Безопасность жизнедеятельности",
+      "teacher": "Дагиров А.А.",
+      "room": "2-9",
+      "type": "Лекция",
+      "color": 0
+    },
+    {
+      "date": "2026-11-18",
+      "pair": 3,
+      "subject": "Безопасность жизнедеятельности",
+      "teacher": "Дагиров А.А.",
+      "room": "2-9",
+      "type": "Практическое занятие",
+      "color": 0
+    },
+    {
+      "date": "2026-11-18",
+      "pair": 4,
+      "subject": "Физика",
+      "teacher": "Магомедов М.Р.",
+      "room": "4-4",
+      "type": "Практическое занятие",
+      "color": 1
+    },
+    {
+      "date": "2026-11-19",
+      "pair": 0,
+      "subject": "Программирование на языке Python",
+      "teacher": "Шихвеледова Т.А.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 3
+    },
+    {
+      "date": "2026-11-19",
+      "pair": 1,
+      "subject": "Программирование на языке Python",
+      "teacher": "Шихвеледова Т.А.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 3
+    },
+    {
+      "date": "2026-11-19",
+      "pair": 2,
+      "subject": "Исследование операций и методы оптимизаций",
+      "teacher": "Гереева Т.Р.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 1
+    },
+    {
+      "date": "2026-11-19",
+      "pair": 3,
+      "subject": "Исследование операций и методы оптимизаций",
+      "teacher": "Гереева Т.Р.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 1
+    },
+    {
+      "date": "2026-11-20",
+      "pair": 2,
+      "subject": "Безопасность жизнедеятельности",
+      "teacher": "Дагиров А.А.",
+      "room": "2-9",
+      "type": "Практическое занятие",
+      "color": 0
+    },
+    {
+      "date": "2026-11-20",
+      "pair": 3,
+      "subject": "Технологии и методы программирования",
+      "teacher": "Гебекова П.И.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 3
+    },
+    {
+      "date": "2026-11-20",
+      "pair": 4,
+      "subject": "Физика",
+      "teacher": "Магомедов М.Р.",
+      "room": "4-4",
+      "type": "Лекция",
+      "color": 1
+    },
+    {
+      "date": "2026-11-21",
+      "pair": 0,
+      "subject": "Лидерство и командообразование",
+      "teacher": "Бабаева Д.Г.",
+      "room": "2-2",
+      "type": "Лекция",
+      "color": 2
+    },
+    {
+      "date": "2026-11-21",
+      "pair": 1,
+      "subject": "Лидерство и командообразование",
+      "teacher": "Бабаева Д.Г.",
+      "room": "2-2",
+      "type": "Практическое занятие",
+      "color": 2
+    },
+    {
+      "date": "2026-11-21",
+      "pair": 2,
+      "subject": "Программная инженерия",
+      "teacher": "Кулибеков Н.А.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 4
+    },
+    {
+      "date": "2026-11-21",
+      "pair": 3,
+      "subject": "Программная инженерия",
+      "teacher": "Кулибеков Н.А.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-11-23",
+      "pair": 1,
+      "subject": "Статистика",
+      "teacher": "Мирзоева С.А.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 0
+    },
+    {
+      "date": "2026-11-23",
+      "pair": 2,
+      "subject": "Статистика",
+      "teacher": "Мирзоева С.А.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 0
+    },
+    {
+      "date": "2026-11-23",
+      "pair": 3,
+      "subject": "Управление информационными системами",
+      "teacher": "Сагидулаева",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 4
+    },
+    {
+      "date": "2026-11-23",
+      "pair": 4,
+      "subject": "Самоменеджмент",
+      "teacher": "Бабаева Д.Г.",
+      "room": "2-2",
+      "type": "Практическое занятие",
+      "color": 2
+    },
+    {
+      "date": "2026-11-24",
+      "pair": 1,
+      "subject": "Вычислительные системы, сети и технологии",
+      "teacher": "Магомедова М.Г.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-11-24",
+      "pair": 2,
+      "subject": "Управление информационными системами",
+      "teacher": "Сагидулаева",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 4
+    },
+    {
+      "date": "2026-11-24",
+      "pair": 3,
+      "subject": "Управление информационными системами",
+      "teacher": "Сагидулаева",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-11-25",
+      "pair": 0,
+      "subject": "Операционные системы",
+      "teacher": "Сагидулаева",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 1
+    },
+    {
+      "date": "2026-11-25",
+      "pair": 1,
+      "subject": "Операционные системы",
+      "teacher": "Сагидулаева",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 1
+    },
+    {
+      "date": "2026-11-25",
+      "pair": 2,
+      "subject": "Вычислительные системы, сети и технологии",
+      "teacher": "Магомедова М.Г.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 4
+    },
+    {
+      "date": "2026-11-25",
+      "pair": 3,
+      "subject": "Вычислительные системы, сети и технологии",
+      "teacher": "Магомедова М.Г.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-11-26",
+      "pair": 2,
+      "subject": "Исследование операций и методы оптимизаций",
+      "teacher": "Гереева Т.Р.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 1
+    },
+    {
+      "date": "2026-11-26",
+      "pair": 3,
+      "subject": "Исследование операций и методы оптимизаций",
+      "teacher": "Гереева Т.Р.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 1
+    },
+    {
+      "date": "2026-11-26",
+      "pair": 4,
+      "subject": "Вычислительные системы, сети и технологии",
+      "teacher": "Магомедова М.Г.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-11-27",
+      "pair": 1,
+      "subject": "Технологии и методы программирования",
+      "teacher": "Гебекова П.И.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 3
+    },
+    {
+      "date": "2026-11-27",
+      "pair": 2,
+      "subject": "Вычислительные системы, сети и технологии",
+      "teacher": "Магомедова М.Г.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-11-27",
+      "pair": 3,
+      "subject": "Вычислительные системы, сети и технологии",
+      "teacher": "Магомедова М.Г.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-11-28",
+      "pair": 0,
+      "subject": "Самоменеджмент",
+      "teacher": "Бабаева Д.Г.",
+      "room": "2-2",
+      "type": "Лекция",
+      "color": 2
+    },
+    {
+      "date": "2026-11-28",
+      "pair": 1,
+      "subject": "Самоменеджмент",
+      "teacher": "Бабаева Д.Г.",
+      "room": "2-2",
+      "type": "Практическое занятие",
+      "color": 2
+    },
+    {
+      "date": "2026-11-28",
+      "pair": 2,
+      "subject": "Иностранный язык",
+      "teacher": "Саидова Г.С.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 0
+    },
+    {
+      "date": "2026-11-28",
+      "pair": 3,
+      "subject": "Иностранный язык",
+      "teacher": "Саидова Г.С.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 0
+    },
+    {
+      "date": "2026-11-30",
+      "pair": 1,
+      "subject": "Статистика",
+      "teacher": "Мирзоева С.А.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 0
+    },
+    {
+      "date": "2026-11-30",
+      "pair": 2,
+      "subject": "Статистика",
+      "teacher": "Мирзоева С.А.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 0
+    },
+    {
+      "date": "2026-11-30",
+      "pair": 3,
+      "subject": "Лидерство и командообразование",
+      "teacher": "Бабаева Д.Г.",
+      "room": "2-2",
+      "type": "Практическое занятие",
+      "color": 2
+    },
+    {
+      "date": "2026-11-30",
+      "pair": 4,
+      "subject": "Лидерство и командообразование",
+      "teacher": "Бабаева Д.Г.",
+      "room": "2-2",
+      "type": "Практическое занятие",
+      "color": 2
+    },
+    {
+      "date": "2026-12-01",
+      "pair": 1,
+      "subject": "Вычислительные системы, сети и технологии",
+      "teacher": "Магомедова М.Г.",
+      "room": "2-6",
+      "type": "Лекция",
+      "color": 4
+    },
+    {
+      "date": "2026-12-01",
+      "pair": 2,
+      "subject": "Вычислительные системы, сети и технологии",
+      "teacher": "Магомедова М.Г.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-12-01",
+      "pair": 3,
+      "subject": "Элективные дисциплины по физической культуре и спорту",
+      "teacher": "Абдеева Э.З.",
+      "room": "Спортзал №4, Джамалутдина Атаева, 5",
+      "type": "Практическое занятие",
+      "color": 3
+    },
+    {
+      "date": "2026-12-01",
+      "pair": 4,
+      "subject": "Иностранный язык",
+      "teacher": "Саидова Г.С.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 0
+    },
+    {
+      "date": "2026-12-02",
+      "pair": 1,
+      "subject": "Иностранный язык",
+      "teacher": "Саидова Г.С.",
+      "room": "2-6",
+      "type": "Практическое занятие",
+      "color": 0
+    },
+    {
+      "date": "2026-12-02",
+      "pair": 2,
+      "subject": "Вычислительные системы, сети и технологии",
+      "teacher": "Магомедова М.Г.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-12-02",
+      "pair": 3,
+      "subject": "Вычислительные системы, сети и технологии",
+      "teacher": "Магомедова М.Г.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-12-02",
+      "pair": 4,
+      "subject": "Самоменеджмент",
+      "teacher": "Бабаева Д.Г.",
+      "room": "2-2",
+      "type": "Практическое занятие",
+      "color": 2
+    },
+    {
+      "date": "2026-12-03",
+      "pair": 2,
+      "subject": "Вычислительные системы, сети и технологии",
+      "teacher": "Магомедова М.Г.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 4
+    },
+    {
+      "date": "2026-12-03",
+      "pair": 3,
+      "subject": "Исследование операций и методы оптимизаций",
+      "teacher": "Гереева Т.Р.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 1
+    },
+    {
+      "date": "2026-12-03",
+      "pair": 4,
+      "subject": "Физика",
+      "teacher": "Магомедов М.Р.",
+      "room": "4-4",
+      "type": "Практическое занятие",
+      "color": 1
+    },
+    {
+      "date": "2026-12-04",
+      "pair": 1,
+      "subject": "Алгоритмы и структуры данных",
+      "teacher": "Савина Е.В.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 2
+    },
+    {
+      "date": "2026-12-04",
+      "pair": 2,
+      "subject": "Вычислительные системы, сети и технологии",
+      "teacher": "Магомедова М.Г.",
+      "room": "2-6",
+      "type": "Лабораторное занятие",
+      "color": 4
+    }
+  ]
+}
+</script><script>const key = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const date = s => new Date(`${s}T12:00:00`);
+function monday(d){const x=new Date(d);x.setHours(12,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return x;}
+function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x;}
+function moscowNow(now=new Date()){const p=Object.fromEntries(new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Moscow',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(now).map(p=>[p.type,p.value]));return {day:`${p.year}-${p.month}-${p.day}`,minutes:+p.hour*60 + +p.minute};}
+const minutes = s => {const [h,m]=s.split(':').map(Number);return h*60+m;};
+function currentState(data,now){const today=data.lessons.filter(l=>l.date===now.day);const active=today.find(l=>now.minutes>=minutes(data.bells[l.pair].start)&&now.minutes<minutes(data.bells[l.pair].end));const next=data.lessons.find(l=>l.date>now.day||(l.date===now.day&&minutes(data.bells[l.pair].start)>now.minutes));return {active,next};}
+
+const $=s=>document.querySelector(s);
+let data,week=monday(date(moscowNow().day)),selected=null;
+const format=(d,opts)=>new Intl.DateTimeFormat('ru-RU',opts).format(d);
+const short=d=>format(d,{day:'numeric',month:'short'}).replace(' г.','');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function renderNow(){const now=moscowNow(),{active,next}=currentState(data,now);let html;
+ if(active){const bell=data.bells[active.pair],left=minutes(bell.end)-now.minutes;html=`<div class="status"><i class="dot"></i> СЕЙЧАС · ${active.pair} ПАРА</div><h2>${esc(active.subject)}</h2><p>${esc(active.room?`Ауд. ${active.room}`:'Аудитория не указана')} · ${bell.start}–${bell.end}<br>До конца ${left} мин.</p><div class="progress"><span style="width:${(60-left)/60*100}%"></span></div>`;}
+ else if(next){const bell=data.bells[next.pair],same=next.date===now.day;html=`<div class="status"><i class="dot"></i> ${same?'СЛЕДУЮЩАЯ ПАРА':'БЛИЖАЙШЕЕ ЗАНЯТИЕ'}</div><h2>${esc(next.subject)}</h2><p>${same?`Через ${minutes(bell.start)-now.minutes} мин.`:short(date(next.date))} · ${bell.start}–${bell.end}<br>${esc(next.room?`Ауд. ${next.room}`:'Аудитория не указана')}</p>`;}
+ else html='<div class="status">✦ УСТАНОВОЧНАЯ СЕССИЯ ЗАВЕРШЕНА</div><h2>Можно выдохнуть.</h2><p>Занятий после 4 декабря в этом расписании нет.<br>Экзаменационная сессия: 1–10 февраля 2027.</p>';
+ $('#now').innerHTML=html;
+}
+function render(){const now=moscowNow(),end=addDays(week,6),weekKey=key(week),current=key(monday(date(now.day))),items=data.lessons.filter(l=>l.date>=weekKey&&l.date<=key(end));
+ $('#range').textContent=`${short(week)} — ${short(end)}`;
+ $('#week-label').textContent=weekKey===current?'ЭТА НЕДЕЛЯ':`${week.getFullYear()} · ${weekKey<current?'ПРОШЕДШАЯ НЕДЕЛЯ':'СЛЕДУЮЩИЕ НЕДЕЛИ'}`;
+ $('#count').textContent=`${items.length} ${items.length%10===1&&items.length%100!==11?'занятие':items.length%10>=2&&items.length%10<=4&&!(items.length%100>=12&&items.length%100<=14)?'занятия':'занятий'}`;
+ $('#weekdays').innerHTML=Array.from({length:7},(_,i)=>{const d=addDays(week,i),k=key(d);return `<button class="day-tab ${k===now.day?'today':''} ${selected===k?'selected':''} ${items.some(l=>l.date===k)?'':'empty'}" data-day="${k}" aria-label="${format(d,{weekday:'long',day:'numeric',month:'long'})}" aria-pressed="${selected===k}">${format(d,{weekday:'short'})}<strong>${d.getDate()}</strong><i></i></button>`;}).join('');
+ const visible=selected?items.filter(l=>l.date===selected):items;
+ if(!visible.length){const outside=key(end)<data.startDate||weekKey>data.endDate;$('#schedule').innerHTML=`<div class="empty-state"><div class="symbol">✳</div><h3>${outside?'Здесь пока нет расписания':selected?'День без пар':'Неделя без пар'}</h3><p>${outside?'В файле есть занятия с 5 ноября по 4 декабря 2026.':'Можно отдохнуть и заняться своими делами.'}</p>${outside?'<button id="session-jump" class="icon" aria-label="К началу сессии">↗</button>':''}</div>`;$('#session-jump')?.addEventListener('click',()=>{week=monday(date(data.startDate));selected=null;render();});}
+ else $('#schedule').innerHTML=[...new Set(visible.map(l=>l.date))].map(day=>`<section class="day-section" id="day-${day}"><h3 class="day-title">${format(date(day),{weekday:'long'})}<span>${short(date(day))}</span>${day===now.day?'<span class="today-badge">Сегодня</span>':''}</h3>${visible.filter(l=>l.date===day).map(l=>{const b=data.bells[l.pair],active=day===now.day&&now.minutes>=minutes(b.start)&&now.minutes<minutes(b.end),past=day<now.day||(day===now.day&&now.minutes>=minutes(b.end));return `<article class="lesson color-${l.color} ${active?'active':past?'past':''}" ${active?'aria-current="true"':''}><div class="time">${b.start}<small>${b.end} · ${l.pair} пара</small></div><div><h4>${esc(l.subject)}</h4><div class="meta"><span class="type">${esc(l.type)}</span>${esc(l.teacher)}</div>${active?'<span class="active-tag">● ИДЁТ СЕЙЧАС</span>':''}</div><div class="room">${esc(l.room?(/Спортзал/.test(l.room)?l.room:`Ауд. ${l.room}`):'Аудитория не указана')}</div></article>`;}).join('')}</section>`).join('');
+ document.querySelectorAll('[data-day]').forEach(b=>b.addEventListener('click',()=>{selected=selected===b.dataset.day?null:b.dataset.day;render();}));
+ renderNow();
+}
+let weekTransition;
+function move(n){
+ clearTimeout(weekTransition);
+ const list=$('#schedule');
+ list.classList.remove('week-enter');
+ list.style.setProperty('--slide-from',n>0?'24px':'-24px');
+ list.classList.add('week-leave');
+ weekTransition=setTimeout(()=>{
+  week=addDays(week,n*7);selected=null;render();
+  list.classList.remove('week-leave');
+  list.classList.add('week-enter');
+ },matchMedia('(prefers-reduced-motion: reduce)').matches?0:130);
+}
+$('#prev').onclick=()=>move(-1);$('#next').onclick=()=>move(1);$('#today').onclick=()=>{week=monday(date(moscowNow().day));selected=null;render();};
+let touch;
+$('.calendar').addEventListener('touchstart',e=>{if(e.touches.length===1)touch={x:e.touches[0].clientX,y:e.touches[0].clientY};},{passive:true});
+$('.calendar').addEventListener('touchend',e=>{if(!touch)return;const dx=e.changedTouches[0].clientX-touch.x,dy=e.changedTouches[0].clientY-touch.y;if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.5)move(dx<0?1:-1);touch=null;},{passive:true});
+document.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1);});
+try{document.body.classList.toggle('dark',localStorage.getItem('theme')==='dark');}catch{}
+$('#theme').onclick=()=>{document.body.classList.toggle('dark');try{localStorage.setItem('theme',document.body.classList.contains('dark')?'dark':'light');}catch{}};
+
+function loadData(value){
+ if(!value || !Array.isArray(value.lessons) || !Array.isArray(value.bells) || value.bells.length!==5) throw new Error('Неверный формат расписания');
+ for(const l of value.lessons){if(!/^\d{4}-\d{2}-\d{2}$/.test(l.date)||!Number.isInteger(l.pair)||!value.bells[l.pair]||typeof l.subject!=='string')throw new Error('Некорректное занятие');}
+ for(const b of value.bells){if(!/^\d{2}:\d{2}$/.test(b.start)||!/^\d{2}:\d{2}$/.test(b.end))throw new Error('Некорректное время');}
+ data=value;
+ render();
+}
+(async()=>{
+ try{
+  let value=JSON.parse($('#schedule-data').textContent);
+  if(location.protocol!=='file:'){try{const r=await fetch('./schedule.json');if(r.ok)value=await r.json();}catch{}}
+  loadData(value);setInterval(()=>{if(data)render();},30000);
+ }catch(e){$('#now').textContent='Не удалось прочитать расписание. Обновите страницу.';}
+})();
+</script></body></html>
