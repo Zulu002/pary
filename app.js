@@ -15,7 +15,7 @@ function renderNow(){const now=moscowNow(),{active,next}=currentState(data,now);
  if(active){const bell=data.bells[active.pair],left=minutes(bell.end)-now.minutes;html=`<div class="status"><i class="dot"></i> СЕЙЧАС · ${active.pair} ПАРА</div><h2>${esc(active.subject)}</h2><p>${esc(active.room?`Ауд. ${active.room}`:'Аудитория не указана')} · ${bell.start}–${bell.end}<br>До конца ${left} мин.</p><div class="progress"><span style="width:${(60-left)/60*100}%"></span></div>`;}
  else if(next){const bell=data.bells[next.pair],same=next.date===now.day;html=`<div class="status"><i class="dot"></i> ${same?'СЛЕДУЮЩАЯ ПАРА':'БЛИЖАЙШЕЕ ЗАНЯТИЕ'}</div><h2>${esc(next.subject)}</h2><p>${same?`Через ${minutes(bell.start)-now.minutes} мин.`:short(date(next.date))} · ${bell.start}–${bell.end}<br>${esc(next.room?`Ауд. ${next.room}`:'Аудитория не указана')}</p>`;}
  else html='<div class="status">✦ УСТАНОВОЧНАЯ СЕССИЯ ЗАВЕРШЕНА</div><h2>Можно выдохнуть.</h2><p>Занятий после 4 декабря в этом расписании нет.<br>Экзаменационная сессия: 1–10 февраля 2027.</p>';
- $('#now').innerHTML=html;
+ if($('#now').innerHTML!==html)$('#now').innerHTML=html;
 }
 function render(){const now=moscowNow(),end=addDays(week,6),weekKey=key(week),current=key(monday(date(now.day))),items=data.lessons.filter(l=>l.date>=weekKey&&l.date<=key(end));
  $('#range').textContent=`${short(week)} — ${short(end)}`;
@@ -24,7 +24,7 @@ function render(){const now=moscowNow(),end=addDays(week,6),weekKey=key(week),cu
  $('#weekdays').innerHTML=Array.from({length:7},(_,i)=>{const d=addDays(week,i),k=key(d);return `<button class="day-tab ${k===now.day?'today':''} ${selected===k?'selected':''} ${items.some(l=>l.date===k)?'':'empty'}" data-day="${k}" aria-label="${format(d,{weekday:'long',day:'numeric',month:'long'})}" aria-pressed="${selected===k}">${format(d,{weekday:'short'})}<strong>${d.getDate()}</strong><i></i></button>`;}).join('');
  const visible=selected?items.filter(l=>l.date===selected):items;
  if(!visible.length){const outside=key(end)<data.startDate||weekKey>data.endDate;$('#schedule').innerHTML=`<div class="empty-state"><div class="symbol">✳</div><h3>${outside?'Здесь пока нет расписания':selected?'День без пар':'Неделя без пар'}</h3><p>${outside?'В файле есть занятия с 5 ноября по 4 декабря 2026.':'Можно отдохнуть и заняться своими делами.'}</p>${outside?'<button id="session-jump" class="icon" aria-label="К началу сессии">↗</button>':''}</div>`;$('#session-jump')?.addEventListener('click',()=>{week=monday(date(data.startDate));selected=null;render();});}
- else $('#schedule').innerHTML=[...new Set(visible.map(l=>l.date))].map(day=>`<section class="day-section" id="day-${day}"><h3 class="day-title">${format(date(day),{weekday:'long'})}<span>${short(date(day))}</span>${day===now.day?'<span class="today-badge">Сегодня</span>':''}</h3>${visible.filter(l=>l.date===day).map(l=>{const b=data.bells[l.pair],active=day===now.day&&now.minutes>=minutes(b.start)&&now.minutes<minutes(b.end),past=day<now.day||(day===now.day&&now.minutes>=minutes(b.end));return `<article class="lesson color-${l.color} ${active?'active':past?'past':''}" ${active?'aria-current="true"':''}><div class="time">${b.start}<small>${b.end} · ${l.pair} пара</small></div><div><h4>${esc(l.subject)}</h4><div class="meta"><span class="type">${esc(l.type)}</span>${esc(l.teacher)}</div>${active?'<span class="active-tag">● ИДЁТ СЕЙЧАС</span>':''}</div><div class="room">${esc(l.room?(/Спортзал/.test(l.room)?l.room:`Ауд. ${l.room}`):'Аудитория не указана')}</div></article>`;}).join('')}</section>`).join('');
+ else $('#schedule').innerHTML=[...new Set(visible.map(l=>l.date))].map(day=>`<section class="day-section" id="day-${day}"><h3 class="day-title">${format(date(day),{weekday:'long'})}<span>${short(date(day))}</span>${day===now.day?'<span class="today-badge">Сегодня</span>':''}</h3>${visible.filter(l=>l.date===day).map(l=>{const b=data.bells[l.pair],active=day===now.day&&now.minutes>=minutes(b.start)&&now.minutes<minutes(b.end),past=day<now.day||(day===now.day&&now.minutes>=minutes(b.end));return `<article data-date="${day}" data-start="${b.start}" data-end="${b.end}" class="lesson color-${l.color} ${active?'active':past?'past':''}" ${active?'aria-current="true"':''}><div class="time">${b.start}<small>${b.end} · ${l.pair} пара</small></div><div><h4>${esc(l.subject)}</h4><div class="meta"><span class="type">${esc(l.type)}</span>${esc(l.teacher)}</div><span class="active-tag" ${active?'':'hidden'}>● ИДЁТ СЕЙЧАС</span></div><div class="room">${esc(l.room?(/Спортзал/.test(l.room)?l.room:`Ауд. ${l.room}`):'Аудитория не указана')}</div></article>`;}).join('')}</section>`).join('');
  document.querySelectorAll('[data-day]').forEach(b=>b.addEventListener('click',()=>{selected=selected===b.dataset.day?null:b.dataset.day;render();}));
  renderNow();
 }
@@ -60,6 +60,30 @@ function loadData(value){
  try{
   let value=JSON.parse($('#schedule-data').textContent);
   if(location.protocol!=='file:'){try{const r=await fetch('./schedule.json');if(r.ok)value=await r.json();}catch{}}
-  loadData(value);setInterval(()=>{if(data)render();},30000);
+  loadData(value);
+  let lastMinute='';
+  function refreshClock(){
+   if(!data||document.hidden)return;
+   const now=moscowNow(),stamp=now.day+'/'+now.minutes;
+   if(stamp===lastMinute)return;
+   lastMinute=stamp;
+   renderNow();
+   document.querySelectorAll('.lesson[data-date]').forEach(card=>{
+    const active=card.dataset.date===now.day&&now.minutes>=minutes(card.dataset.start)&&now.minutes<minutes(card.dataset.end);
+    const past=card.dataset.date<now.day||(card.dataset.date===now.day&&now.minutes>=minutes(card.dataset.end));
+    card.classList.toggle('active',active);card.classList.toggle('past',past);
+    if(active)card.setAttribute('aria-current','true');else card.removeAttribute('aria-current');
+    const tag=card.querySelector('.active-tag');if(tag)tag.hidden=!active;
+   });
+   document.querySelectorAll('[data-day]').forEach(button=>button.classList.toggle('today',button.dataset.day===now.day));
+   document.querySelectorAll('.day-section').forEach(section=>{
+    const title=section.querySelector('.day-title'),today=section.id==='day-'+now.day;
+    const badge=title.querySelector('.today-badge');
+    if(!today&&badge)badge.remove();
+    if(today&&!badge){const span=document.createElement('span');span.className='today-badge';span.textContent='Сегодня';title.append(span);}
+   });
+  }
+  refreshClock();setInterval(refreshClock,15000);
+  document.addEventListener('visibilitychange',refreshClock);
  }catch(e){$('#now').textContent='Не удалось прочитать расписание. Обновите страницу.';}
 })();
